@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+<html>
+	<head>
+
+	</head>
+
+		<body>
+
+			<form action="" method="post">
+				{{ form.hidden_tag() }}
+				<p>
+					{{form.imgid.label}}<br>
+					{{form.imgid(size=32)}}<br>
+				</p>
+				{{form.submit}}
+			</form>
+			{% with messages = get_flashed_messages() %}
+            	{% if messages %}
+                	{% for message in messages %}
+                		{{ message }}
+                	{% endfor %}
+                {% endif %}
+			{% endwith %}
+
+		</body>
+</html>
