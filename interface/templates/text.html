@@ -1,0 +1,35 @@
+<!doctype html>
+<title>Text -> Text, Image</title>
+
+<body>
+{% if captions %}
+<h2> Target Captions</h2>
+<p>
+    <ul>
+        {% for caption in captions %}
+        <li>{{ caption }}</li>
+        {% endfor %}
+    </ul>
+</p>
+{% endif %}
+{% if target_imgs %}
+<h2>Target Images</h2>
+{% for target_img in target_imgs %}
+<div>
+    <img src="{{ url_for('display_local', filename=target_img) }}">
+</div>
+{% endfor %}
+{% endif %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{form.textfield.label}}<br>
+        {{form.textfield(size=32)}}<br>
+    </p>
+    {{form.submit}}
+</form>
+
+
+
+</body>
+</html>

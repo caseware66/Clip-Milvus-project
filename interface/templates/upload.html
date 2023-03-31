@@ -1,0 +1,48 @@
+<!doctype html>
+<title>Image -> Text, Image</title>
+<h2>Upload an Image to query</h2>
+
+{% if filename %}
+<h2>Source Image</h2>
+	<div>
+		<img src="{{ url_for('display_image', filename=filename) }}">
+	</div>
+{% endif %}
+
+
+
+{% if captions %}
+
+<h2> Target Captions</h2>
+
+<p>
+	<ul>
+		{% for caption in captions %}
+		<li>{{ caption }}</li>
+		{% endfor %}
+	</ul>
+</p>
+
+{% endif %}
+
+{% if target_imgs %}
+
+<h2>Target Images</h2>
+{% for target_img in target_imgs %}
+	<div>
+		<img src="{{ url_for('display_local', filename=target_img) }}">
+	</div>
+{% endfor %}
+
+
+{% endif %}
+<form method="post" action="/img_search" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
